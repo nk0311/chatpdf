@@ -12,7 +12,7 @@ try {
         region: 'us-east-2'
     })
 
-    const file_key = 'uploads/' + Date.now().toString() + file.name.replace('', '-')
+    const file_key = 'uploads/' + Date.now().toString() + file.name.replace(' ', '-')
 
     const params = {
         Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME!,
@@ -22,7 +22,9 @@ try {
     }
 
     const upload = s3.putObject(params).on('httpUploadProgress', evt => {
-        console.log('uploading to s3...', parseInt(((evt.loaded*100)/evt.total).toString())) + "%"
+        // console.log('uploading to s3...', parseInt(((evt.loaded*100)/evt.total).toString())) + "%"
+        console.log('uploading to s3...', parseInt(((evt.loaded * 100) / evt.total).toString()) + "%");
+
     }).promise()
     
     await upload.then(data => {
@@ -33,11 +35,14 @@ try {
         file_key,
         file_name: file.name
     });
-    }  catch (error) {}
+    }  catch (error) {
+        console.error('Error uploading to S3:', error);
+    }
 }
 
 export function getS3Url(file_key: string) {
-    const url = `https: `
+    const url = `https://${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}.s3.us-east-2.amazonaws.com/${file_key}`;
+    return url;
 }
 
 
