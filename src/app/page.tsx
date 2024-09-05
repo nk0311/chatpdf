@@ -1,9 +1,9 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/button';
 import { UserButton } from '@clerk/nextjs';
 import { auth } from '@clerk/nextjs/server'
 import Link from 'next/link';
 import {LogIn} from 'lucide-react'
-import FileUpload from '@/components/ui/fileupload';
+import FileUpload from '@/components/FileUpload';
 
 export default async function Home() {
   const {userId} = await auth()

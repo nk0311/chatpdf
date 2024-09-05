@@ -3,7 +3,7 @@ import { loadS3IntoPinecone } from "@/lib/pinecone";
 // import { ileKey } from "lucide-react";
 import { db } from "@/lib/db"
 import { auth } from '@clerk/nextjs/server'
-import { getS3Url } from "@/lib/db/s3";
+import { getS3Url } from "@/lib/s3";
 import { chats } from "@/lib/db/schema"
 
 
