@@ -11,7 +11,7 @@ import axios from "axios";
 type Props = {
   chats: DrizzleChat[];
   chatId: number;
-  isPro: boolean;
+ 
 };
 
 const ChatSideBar = ({ chats, chatId }: Props) => {
