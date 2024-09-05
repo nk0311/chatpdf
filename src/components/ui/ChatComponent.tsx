@@ -51,3 +51,4 @@ const ChatComponent = (props: Props) => {
 };
 
 export default ChatComponent;
+
